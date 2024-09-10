@@ -69,8 +69,8 @@ Once you have ran the script for a while:
   *(When checking this username, the response was either "Username '' is unavailable" or "Username '' is unknown")*
 
 # Credits
-[Path-Checker](https://github.com/4q-u4/GitHub-Username-Availability-Checker)
-
+- [Path-Checker](https://github.com/4q-u4/GitHub-Username-Availability-Checker)
+- [ASCII Text](https://www.asciiart.eu/text-to-ascii-art)
 # License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
