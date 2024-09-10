@@ -58,4 +58,4 @@ while True:
             file.write(user + "\n")         
     else:
         print("BLOCKED FROM GITHUB")
-        time.sleep(20)
+        time.sleep(5)
