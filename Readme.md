@@ -4,7 +4,7 @@
 > Using this script may violate [GitHub's Terms of Service](https://docs.github.com/en/site-policy/github-terms/github-terms-of-service). If your account gets suspended due to using this script, it's your responsibility.
 
 ## Table of Contents
-- [Features](#Features)
+- [Features](#features)
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Credits](#credits)
@@ -28,7 +28,7 @@ git clone https://xbubbo/Username-Checker
 pip install requests colorama
 ```
 
-1. **Run the Python script:**
+2. **Run the Python script:**
    This will check username paths and save the unused names in `NotTaken.txt`.
    ```bash
    python checker.py
@@ -61,14 +61,16 @@ pip install requests colorama
      npm start
      ```
 4. **Once you are done running the script:**
-Once you have ran the script for a while: 
-Available Usernames - ``/Status/Available.txt``.
-Taken Usernames - ``/Status/Taken.txt``.
-Unknown Usernames - ``/Status/Unknown.txt``. (When checking this username the response was either "Username '' is unavailable", or "Username '' is unknown``.
+Once you have ran the script for a while:  
+
+- **Available Usernames** - `/Status/Available.txt`
+- **Taken Usernames** - `/Status/Taken.txt`
+- **Unknown Usernames** - `/Status/Unknown.txt`  
+  *(When checking this username, the response was either "Username '' is unavailable" or "Username '' is unknown")*
 
 # Credits
-[Path-Checker](https://github.com/4q-u4/GitHub-Username-Availability-Checker)
-
+- [Path-Checker](https://github.com/4q-u4/GitHub-Username-Availability-Checker)
+- [ASCII Text](https://www.asciiart.eu/text-to-ascii-art)
 # License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
