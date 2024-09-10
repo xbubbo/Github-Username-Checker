@@ -85,7 +85,6 @@ It is setup like this to ensure that a username is available quickly without bei
 - [ASCII Text](https://www.asciiart.eu/text-to-ascii-art)
 
 ## Usernames 
-As of September 10th, 2024 all possible 2 Character/2 Letter usernames are in use or cannot be used - see the [Taken.txt](https://github.com/xbubbo/Github-Username-Checker/blob/Archive/9-10-2024/2-Letter/Taken.txt) file for details
-
+As of September 10th, 2024 all possible 2 Character/2 Letter usernames are in use or cannot be used - [Taken.txt](https://github.com/xbubbo/Github-Username-Checker/blob/Archive/9-10-2024/2-Letter/Taken.txt).
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
