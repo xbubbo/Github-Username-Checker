@@ -8,6 +8,7 @@
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Usernames](#usernames)
 - [Credits](#credits)
 - [License](#license)
 
@@ -78,9 +79,13 @@ It is setup like this to ensure that a username is available quickly without bei
 1. After running the script, it will check the usernames in `NotTaken.txt` and categorize them into:
    - **Available Usernames** - `/Status/Available.txt`
    - **Taken Usernames** - `/Status/Taken.txt`
+
 ## Credits
 - [Path-Checker](https://github.com/4q-u4/GitHub-Username-Availability-Checker)
 - [ASCII Text](https://www.asciiart.eu/text-to-ascii-art)
+
+## Usernames 
+As of September 10th, 2024 all possible 2 Character/2 Letter usernames are in use or cannot be used - see the [Taken.txt](https://github.com/xbubbo/Github-Username-Checker/blob/Archive/9-10-2024/2-Letter/Taken.txt) file for details
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

@@ -1,3 +1,4 @@
+require('dotenv').config();
 const axios = require('axios');
 const fs = require('node:fs');
 const path = require('node:path');
@@ -7,6 +8,7 @@ const Taken = path.join(__dirname, 'Status', 'Taken.txt');
 const NotTaken = path.join(__dirname, 'Status', 'NotTaken.txt');
 
 const characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
+const length = Number.parseInt(process.env.LENGTH, 10) || 3; 
 
 const loadTakenUsernames = () => {
     const takenUsernames = new Set();
@@ -23,21 +25,26 @@ const loadTakenUsernames = () => {
 };
 
 const isUsernameTaken = (username, takenUsernames) => {
-  //  console.log(`Skipping taken username: ${username}`);
-    return takenUsernames.has(username);
+  return takenUsernames.has(username);
 };
 
 const generateUsername = () => {
     while (true) {
-        const includeHyphen = Math.random() < 0.5;
         let username;
 
-        if (includeHyphen) {
-            const part = [...Array(2)].map(() => characters.charAt(randomInt(0, characters.length))).join('');
-            const hyphenPosition = randomInt(1, part.length);
-            username = `${part.slice(0, hyphenPosition)}-${part.slice(hyphenPosition)}`;
+        if (length === 2) {
+            username = [...Array(2)].map(() => characters.charAt(randomInt(0, characters.length))).join('');
+        } else if (length === 3) {
+            const includeHyphen = Math.random() < 0.5;
+            if (includeHyphen) {
+                const part = [...Array(2)].map(() => characters.charAt(randomInt(0, characters.length))).join('');
+                const hyphenPosition = randomInt(1, part.length);
+                username = `${part.slice(0, hyphenPosition)}-${part.slice(hyphenPosition)}`;
+            } else {
+                username = [...Array(3)].map(() => characters.charAt(randomInt(0, characters.length))).join('');
+            }
         } else {
-            username = [...Array(3)].map(() => characters.charAt(randomInt(0, characters.length))).join('');
+            throw new Error(`Unsupported username length: ${length}`);
         }
 
         if (username[0] !== '-' && username[username.length - 1] !== '-' && !username.includes('--')) {
@@ -50,11 +57,10 @@ const checkUsernameAvailability = async (username) => {
     while (true) {
         try {
             const response = await axios.get(`https://www.github.com/${username}/`);
-            if (response.status === 200 || response.status === 410 ) {
-               // console.log(`GitHub response status for ${username}: ${response.status}`);
+            if (response.status === 200 || response.status === 410) {
                 return 'taken';
-            }if (response.status === 404) {
-                console.log(`GitHub response status for ${username}: 404`);
+            }
+            if (response.status === 404) {
                 return 'available';
             }
         } catch (err) {
@@ -62,18 +68,16 @@ const checkUsernameAvailability = async (username) => {
                 if (err.response.status === 429) {
                     console.log(`Rate limit exceeded for ${username}. Waiting 4 seconds before retrying...`);
                     await new Promise(resolve => setTimeout(resolve, 4000));
-                } if (err.response.status === 410) {
+                } else if (err.response.status === 410) {
                     return 'taken';
-                }
-                if (err.response.status === 404) {
-                    // console.log(`GitHub response status for ${username}: 404`);
+                } else if (err.response.status === 404) {
                     return 'available';
                 }
-                    console.error(`Error checking username ${username}: ${err.response.status}`);
-                    throw err;
-            }
-                console.error(`Error checking username ${username}: ${err.message}`);
+                console.error(`Error checking username ${username}: ${err.response.status}`);
                 throw err;
+            }
+            console.error(`Error checking username ${username}: ${err.message}`);
+            throw err;
         }
     }
 };
@@ -83,7 +87,6 @@ const checkUsernames = async () => {
 
     while (true) {
         const username = generateUsername();
-       // console.log(`Checking username: ${username}`);
 
         if (isUsernameTaken(username, takenUsernames)) {
             continue;
