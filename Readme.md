@@ -7,47 +7,29 @@
 - [Features](#features)
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
+- [Usage](#usage)
 - [Credits](#credits)
 - [License](#license)
 
 ## Features
 - Quickly checks large numbers of usernames
-- Uses your Auth Token to verify which usernames are available
+- Uses your GitHub Auth Token to verify which usernames are available
 - Reports usernames as available, taken, or unknown/unavailable
 
 ## Prerequisites
 - Node.js
-- Python
-- Github
+- GitHub Account(s)
 
-### Installation
+## Installation
 
 1. **Clone the repository:**
-```bash
-git clone https://xbubbo/Username-Checker
-pip install requests colorama
-```
+    ```bash
+    git clone https://github.com/your-username/Username-Checker.git
+    cd Username-Checker
+    ```
 
-2. **Run the Python script:**
-   This will check username paths and save the unused names in `NotTaken.txt`.
-   ```bash
-   python checker.py
-   ```
-
-2. **Set API & Cookie in ENV:**
-1. Go to [GitHub Settings](https://github.com/settings/admin).
-2. Click **"Change username"**.
-3. Open **DevTools** (Ctrl + Shift + I), and minimize the tab.
-4. Enter a random username.
-5. Re-open **DevTools** and search **"check"** in the network tab.
-6. Click on **"rename_check?suggest_usernames=true"**.
-7. Copy the **Cookie** from **Request Headers**.
-8. Copy the **authenticity_token** from **Form Data**.
-9. Open your **.env** file.
-10. Paste the **cookie** and **token** into the respective variables.
-
-3. **Install dependencies and start the script:**
-    This will check the usernames in ``NotTaken.txt`` and put them into their own files accordingly.
+2. **Install dependencies and start the script:**
+This script checks if usernames are taken by examining public GitHub accounts. Note that private accounts aren’t considered, so a second script will verify the username’s availability more thoroughly. 
 
    - **With PNPM:**
      ```bash
@@ -60,18 +42,45 @@ pip install requests colorama
      npm install
      npm start
      ```
-4. **Once you are done running the script:**
-Once you have ran the script for a while:  
 
-- **Available Usernames** - `/Status/Available.txt`
-- **Taken Usernames** - `/Status/Taken.txt`
-- **Unknown Usernames** - `/Status/Unknown.txt`  
-  *(When checking this username, the response was either "Username '' is unavailable" or "Username '' is unknown")*
+3. **Set up API & Cookie in your environment:**
 
-# Credits
+1. Go to GitHub Settings.
+2. Click "Change username".
+3. Open DevTools (Ctrl + Shift + I) and minimize the tab.
+4. Enter a random username.
+5. Re-open DevTools and search "check" in the network tab.
+6. Click on "rename_check?suggest_usernames=true".
+7. Copy the Cookie from Request Headers.
+8. Copy the authenticity_token from Form Data.
+9. Create or edit your `.env` file in the root of the project and add the following variables:
+   ```
+   TOKEN='TOKEN_HERE'
+   COOKIE='COOKIE_HERE'
+   TOKEN2='TOKEN2_HERE'
+   COOKIE2='COOKIE2_HERE'
+   ```
+4. **Final Script**:
+Once you have ran the path-checker script then you will run the script that can 100% check if a username is available, why is it setup like this?
+It is setup like this to ensure that a username is available quickly without being rate limited.
+
+   - **With PNPM:**
+     ```bash
+     pnpm checker
+     ```
+
+   - **With NPM:**
+     ```bash
+     npm checker
+     ```
+
+## Usage
+1. After running the script, it will check the usernames in `NotTaken.txt` and categorize them into:
+   - **Available Usernames** - `/Status/Available.txt`
+   - **Taken Usernames** - `/Status/Taken.txt`
+## Credits
 - [Path-Checker](https://github.com/4q-u4/GitHub-Username-Availability-Checker)
 - [ASCII Text](https://www.asciiart.eu/text-to-ascii-art)
-# License
+
+## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-

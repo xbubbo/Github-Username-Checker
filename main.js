@@ -6,7 +6,6 @@ const GITHUB_API_URL = 'https://github.com/account/rename_check?suggest_username
 const NotTaken = 'Status/NotTaken.txt';
 const Taken = 'Status/Taken.txt';
 const Available = 'Status/Available.txt';
-const UnAvailable = 'Status/Unknown.txt';
 const delayTime = 70;
 
 const usernames = fs.readFileSync(NotTaken, 'utf-8').split('\n').filter(line => line.trim() !== '');
@@ -73,7 +72,7 @@ const checkUsername = async (username) => {
     }
     if (text.includes('is unavailable')) {
       console.log(`\x1b[33mUsername "${username}" is unavailable.\x1b[0m`);
-      return 'unavailable'; 
+      return 'true'; 
     }
     console.log("\x1b[31mTemporarily blocked by Github.\x1b[0m"); 
     switchCredentials();  
@@ -93,10 +92,6 @@ const updateFiles = (username, status) => {
     fs.appendFileSync(Taken, `${username}\n`);
   } else if (status === false) {
     fs.appendFileSync(Available, `${username}\n`);
-  } else if (status === 'unavailable') {
-    availableUsernames = availableUsernames.filter(user => user.trim() !== username);
-    fs.writeFileSync(NotTaken, availableUsernames.join('\n'));
-    fs.appendFileSync(UnAvailable, `${username}\n`);
   }
 };
 
