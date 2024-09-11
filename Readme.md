@@ -25,7 +25,7 @@
 
 1. **Clone the repository:**
     ```bash
-    git clone https://github.com/your-username/Username-Checker.git
+    git clone https://github.com/xbubbo/Github-Username-Checker
     cd Username-Checker
     ```
 
