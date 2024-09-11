@@ -86,14 +86,17 @@ const checkUsername = async (username) => {
 const updateFiles = (username, status) => {
   let availableUsernames = fs.readFileSync(NotTaken, 'utf-8').split('\n').filter(line => line.trim() !== '');
   
-  if (status === true) {
+  if (status === true) { 
     availableUsernames = availableUsernames.filter(user => user.trim() !== username);
     fs.writeFileSync(NotTaken, availableUsernames.join('\n'));
     fs.appendFileSync(Taken, `${username}\n`);
   } else if (status === false) {
+    availableUsernames = availableUsernames.filter(user => user.trim() !== username); 
+    fs.writeFileSync(NotTaken, availableUsernames.join('\n'));
     fs.appendFileSync(Available, `${username}\n`);
   }
 };
+
 
 const checkUsernames = async () => {
   for (const username of usernames) {
