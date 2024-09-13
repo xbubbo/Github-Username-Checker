@@ -35,13 +35,13 @@ This script checks if usernames are taken by examining public GitHub accounts. N
    - **With PNPM:**
      ```bash
      pnpm install
-     pnpm start
+     pnpm checker
      ```
 
    - **With NPM:**
      ```bash
      npm install
-     npm start
+     npm checker
      ```
 
 3. **Set up API & Cookie in your environment:**
@@ -65,14 +65,17 @@ This script checks if usernames are taken by examining public GitHub accounts. N
 Once you have ran the path-checker script then you will run the script that can 100% check if a username is available, why is it setup like this?
 It is setup like this to ensure that a username is available quickly without being rate limited.
 
+> [!NOTE]
+> You **CANNOT** use this script on a Github Codespace.
+
    - **With PNPM:**
      ```bash
-     pnpm checker
+     pnpm start
      ```
 
    - **With NPM:**
      ```bash
-     npm checker
+     npm start
      ```
 
 ## Usage
