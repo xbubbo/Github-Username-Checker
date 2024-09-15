@@ -54,13 +54,7 @@ This script checks if usernames are taken by examining public GitHub accounts. N
 6. Click on "rename_check?suggest_usernames=true".
 7. Copy the Cookie from Request Headers.
 8. Copy the authenticity_token from Form Data.
-9. Create or edit your `.env` file in the root of the project and add the following variables:
-   ```
-   TOKEN='TOKEN_HERE'
-   COOKIE='COOKIE_HERE'
-   TOKEN2='TOKEN2_HERE'
-   COOKIE2='COOKIE2_HERE'
-   ```
+9. Edit your `.env` file in the root of the project and add the variables from above, you need two differe accounts for the variables.
 4. **Final Script**:
 Once you have ran the path-checker script then you will run the script that can 100% check if a username is available, why is it setup like this?
 It is setup like this to ensure that a username is available quickly without being rate limited.
