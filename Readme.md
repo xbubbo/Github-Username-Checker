@@ -7,7 +7,6 @@
 - [Features](#features)
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
-- [Usage](#usage)
 - [Usernames](#usernames)
 - [Credits](#credits)
 - [License](#license)
@@ -44,38 +43,36 @@ This script checks if usernames are taken by examining public GitHub accounts. N
      npm checker
      ```
 
-3. **Set up API & Cookie in your environment:**
+### Set up API & Cookie in Environment
 
-1. Go to GitHub Settings.
-2. Click "Change username".
-3. Open DevTools (Ctrl + Shift + I) and minimize the tab.
-4. Enter a random username.
-5. Re-open DevTools and search "check" in the network tab.
-6. Click on "rename_check?suggest_usernames=true".
-7. Copy the Cookie from Request Headers.
-8. Copy the authenticity_token from Form Data.
-9. Edit your `.env` file in the root of the project and add the variables from above, you need two differe accounts for the variables.
-4. **Final Script**:
-Once you have ran the path-checker script then you will run the script that can 100% check if a username is available, why is it setup like this?
-It is setup like this to ensure that a username is available quickly without being rate limited.
+1. **GitHub Settings**:
+   - Go to GitHub Settings and select "Change username."
+   - Open DevTools (Ctrl + Shift + I), enter any random username, then check the network tab for "rename_check?suggest_usernames=true."
+   - Copy the Cookie from Request Headers and the authenticity_token from Form Data.
+
+2. **Add Variables**:
+   - In your project's `.env` file, add the Cookie and authenticity_token from two different accounts.
+
+3. **Run the Scripts**:
+   - First, run the path-checker script to verify the setup. This checks usernames without hitting rate limits.
 
 > [!NOTE]
 > You **CANNOT** use this script on a Github Codespace.
-
-   - **With PNPM:**
+   
+   - **Run with PNPM**:
      ```bash
      pnpm start
      ```
 
-   - **With NPM:**
+   - **Run with NPM**:
      ```bash
      npm start
      ```
 
-## Usage
-1. After running the script, it will check the usernames in `NotTaken.txt` and categorize them into:
-   - **Available Usernames** - `/Status/Available.txt`
-   - **Taken Usernames** - `/Status/Taken.txt`
+4. **Output**:
+   - The script categorizes usernames from `NotTaken.txt`:
+     - **Available Usernames**: `/Status/Available.txt`
+     - **Taken Usernames**: `/Status/Taken.txt`
 
 ## Credits
 - [Path-Checker](https://github.com/4q-u4/GitHub-Username-Availability-Checker)
